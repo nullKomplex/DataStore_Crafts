@@ -1,0 +1,8 @@
+package-as: DataStore_Crafts
+
+move-folders:
+ DataStore_Crafts/DataStore_Crafts: DataStore_Crafts
+
+ignore:
+ - LICENCE.md
+ - README.md
