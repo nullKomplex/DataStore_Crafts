@@ -356,7 +356,6 @@ local function ScanRecipes()
 		
 		-- if we are rank 2 out of 3 for a recipe, do not save rank 1 and rank 3
 		if recipeID == highestRankID then
-		
 			-- save the recipe
 			crafts[info.categoryID] = crafts[info.categoryID] or {}
 			table.insert(crafts[info.categoryID], 
@@ -690,7 +689,7 @@ local function _IsCraftKnown(profession, spellID, rank)
 
 	_IterateRecipes(profession, 0, 0, function(recipeData) 
 		local _, recipeID, isLearned, recipeRank = _GetRecipeInfo(recipeData)
-		if (GetSpellInfo(recipeID) == GetSpellInfo(spellID)) and (tonumber(rank) <= tonumber(recipeRank)) and isLearned then
+		if (recipeID == spellID) and (tonumber(rank) <= tonumber(recipeRank)) and isLearned then
 			isKnown = true
 			return true	-- stop iteration
 		end
