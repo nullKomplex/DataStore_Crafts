@@ -261,6 +261,9 @@ local function ScanRecipeCategories(profession)
 	
 	-- loop through this profession's categories
 	for _, id in ipairs( { C_TradeSkillUI.GetCategories() } ) do
+            -- Temporary workaround for C_TradeSkillUI.GetCategories() including a duplicate of Food of Draenor for some reason:
+            if id ~= 1013 then
+             
 		local info = C_TradeSkillUI.GetCategoryInfo(id)
 		
 		cumulatedRank = cumulatedRank + (info.skillLineCurrentLevel or 0)
@@ -281,6 +284,9 @@ local function ScanRecipeCategories(profession)
 			MaxRank = info.skillLineMaxLevel,
 			SubCategories = subCats
 		})
+        
+            -- End temporary workaround
+            end
 	end
 	
 	profession.Rank = cumulatedRank
